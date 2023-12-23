@@ -64,13 +64,13 @@ class _TopPart extends StatelessWidget {
                         height: 300,
                         child: CupertinoDatePicker(
                           mode: CupertinoDatePickerMode.date,
-                          onDateTimeChanged: (DateTime date){
+                          onDateTimeChanged: (DateTime date) {
                             print(date);
                           },
-                        )
+                        ),
                       ),
                     );
-              });
+                  });
             },
             icon: Icon(
               Icons.favorite,
