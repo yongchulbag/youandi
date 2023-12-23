@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,10 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
           width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
-              Expanded(child: _TopPart()),
-              Expanded(
-                child: Image.asset('asset/img/middle_image.png'),
-              ),
+                  Expanded(child: _TopPart()),
+                  Expanded(child:Image.asset('asset/img/middle_image.png'),),
             ],
           ),
         ),
@@ -52,26 +49,7 @@ class _TopPart extends StatelessWidget {
                 color: Colors.white, fontFamily: 'sunflower', fontSize: 20)),
         IconButton(
             iconSize: 60,
-            onPressed: () {
-              showCupertinoDialog(
-                  context: context,
-                  barrierDismissible: true,
-                  builder: (BuildContext context) {
-                    return Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        color: Colors.white,
-                        height: 300,
-                        child: CupertinoDatePicker(
-                          mode: CupertinoDatePickerMode.date,
-                          onDateTimeChanged: (DateTime date){
-                            print(date);
-                          },
-                        )
-                      ),
-                    );
-              });
-            },
+            onPressed: () {},
             icon: Icon(
               Icons.favorite,
               color: Colors.red,
