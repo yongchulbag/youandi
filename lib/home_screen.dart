@@ -43,13 +43,14 @@ class _TopPartState extends State<_TopPart> {
 
   @override
   Widget build(BuildContext context) {
+    final theme=Theme.of(context);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Text(
           'U&I',
-          style: TextStyle(
-              color: Colors.white, fontFamily: 'parisienne', fontSize: 80),
+          style: theme.textTheme.headline1,
         ),
         Text('우리 처음 만난 날은',
             style: TextStyle(
