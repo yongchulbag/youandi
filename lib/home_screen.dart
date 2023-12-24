@@ -31,8 +31,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class _TopPart extends StatelessWidget {
+class _TopPart extends StatefulWidget {
   const _TopPart({super.key});
+
+  @override
+  State<_TopPart> createState() => _TopPartState();
+}
+
+class _TopPartState extends State<_TopPart> {
+  DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +51,10 @@ class _TopPart extends StatelessWidget {
           style: TextStyle(
               color: Colors.white, fontFamily: 'parisienne', fontSize: 80),
         ),
-        Text('우리 처음 만난날',
+        Text('우리 처음 만난 날은',
             style: TextStyle(
                 color: Colors.white, fontFamily: 'sunflower', fontSize: 30)),
-        Text('2023. 11. 26',
+        Text('${selectedDate.year}.${selectedDate.month}.${selectedDate.day}',
             style: TextStyle(
                 color: Colors.white, fontFamily: 'sunflower', fontSize: 20)),
         IconButton(
@@ -64,7 +71,17 @@ class _TopPart extends StatelessWidget {
                         height: 300,
                         child: CupertinoDatePicker(
                           mode: CupertinoDatePickerMode.date,
+                          initialDateTime: selectedDate,
+                          maximumDate: DateTime(
+                            DateTime.now().year,
+                            DateTime.now().month,
+                            DateTime.now().day,
+                            DateTime.now().hour+1,
+                          ),
                           onDateTimeChanged: (DateTime date) {
+                            setState(() {
+                              selectedDate = date;
+                            });
                             print(date);
                           },
                         ),
@@ -76,7 +93,12 @@ class _TopPart extends StatelessWidget {
               Icons.favorite,
               color: Colors.red,
             )),
-        Text('D+1',
+        Text(
+            'D+${DateTime(
+              DateTime.now().year,
+              DateTime.now().month,
+              DateTime.now().day,
+            ).difference(selectedDate).inDays+1}',
             style: TextStyle(
               color: Colors.white,
               fontFamily: 'sunflower',
